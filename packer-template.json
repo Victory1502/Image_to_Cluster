@@ -1,0 +1,23 @@
+{
+  "builders": [
+    {
+      "type": "docker",
+      "image": "nginx:alpine",
+      "commit": true
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "index.html",
+      "destination": "/usr/share/nginx/html/index.html"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "docker-tag",
+      "repository": "custom-nginx",
+      "tag": "latest"
+    }
+  ]
+}
